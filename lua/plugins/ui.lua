@@ -1,40 +1,55 @@
 return {
     {
-        "nvim-lualine/lualine.nvim",
-        enabled = true,
+        "nvim-tree/nvim-web-devicons",
+        lazy = true,
+    },
+
+    {
+        "echasnovski/mini.statusline",
         config = function()
-            require('lualine').setup {
-                options = {
-                    theme = 'auto',
-                    globalstatus = false,
-                    icons_enabled = false,
-                    component_separators = { left = '', right = '' },
-                    section_separators = { left = '', right = '' },
-                },
-                sections = {
-                    lualine_a = {},
-                    lualine_b = { 'branch', 'diff' },
-                    lualine_c = { { 'filename', path =  1 } },
-                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-                    lualine_y = { 'progress' },
-                    lualine_z = { 'location' }
-                },
-                inactive_sections = {
-                    lualine_c = { { 'filename', path =  1 } },
-                },
-            }
+            vim.opt.laststatus = 3
+
+            local statusline = require("mini.statusline")
+            statusline.setup({ use_icons = vim.g.have_nerd_font })
+            statusline.section_location = function()
+                return "%2l:%-2v"
+            end
+            statusline.section_lsp = function()
+                return ""
+            end
+            statusline.section_diagnostics = function()
+                return ""
+            end
         end
     },
 
     {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
-        opts = {
-            plugins = {
-                gitsigns = true,
-                tmux = true,
-            },
-        },
-        keys = { { "\\z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+        "b0o/incline.nvim",
+        event = "VeryLazy",
+        config = function()
+            local devicons = require("nvim-web-devicons")
+            local helpers = require("incline.helpers")
+            require("incline").setup({
+                window = { margin = { vertical = 0, horizontal = 0 } },
+                hide = { cursorline = false },
+                render = function(props)
+                    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+                    if filename == "" then
+                        filename = "[No Name]"
+                    end
+                    local ft_icon, ft_color = devicons.get_icon_color(filename)
+                    local modified = vim.bo[props.buf].modified
+                    local filename = filename .. (modified and " [+]" or "")
+                
+                    return {
+                        ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
+                        " ",
+                        filename,
+                        -- { filename, gui = modified and "bold,italic" or "bold" },
+                        -- guibg = "#44406e",
+                    }
+                end,
+            })
+        end
     },
 }
