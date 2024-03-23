@@ -12,24 +12,6 @@ return {
     },
 
     {
-        'echasnovski/mini.statusline',
-        version = false,
-        config = function()
-            local statusline = require("mini.statusline")
-            statusline.setup({ use_icons = false })
-
-            -- statusline.section_git = function() return nil end
-            statusline.section_diagnostics = function() return nil end
-            statusline.section_fileinfo = function()
-                local filetype = vim.bo.filetype
-                local encoding = vim.bo.fileencoding or vim.bo.encoding
-                local format = vim.bo.fileformat
-                return string.format('%s %s [%s]', filetype, encoding, format)
-            end
-        end
-    },
-
-    {
         'mbbill/undotree',
         keys = {
             { "<leader>u", "<cmd>UndotreeToggle<cr>" },

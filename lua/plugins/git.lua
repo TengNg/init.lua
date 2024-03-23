@@ -4,6 +4,7 @@ return {
         lazy = false,
         keys = {
             { '<leader>gs', vim.cmd.Git, silent = true },
+            { '<leader>gb', "<cmd>Git blame<cr>", silent = true },
             { '<leader>gl', "<cmd>Git log --oneline<cr>", silent = true },
             { '<leader>gL', "<cmd>Git log --oneline %<cr>", silent = true },
             { "gh", "<cmd>diffget //2<CR>"},
@@ -28,7 +29,7 @@ return {
 
     {
         'lewis6991/gitsigns.nvim',
-        enabled = true,
+        enabled = false,
         config = function()
             require('gitsigns').setup({
                 max_file_length = 2000, -- Disable if file is longer than this (in lines)

@@ -10,10 +10,9 @@ g.mapleader = " "
 -- o.cmdheight = 0
 -- o.laststatus = 3
 -- o.winbar = "%= %m %f %="
+-- o.guicursor = ""
 
-o.guicursor = ""
-
-o.showmode = false
+o.showmode = true
 o.nu = true
 o.rnu = true
 
@@ -45,6 +44,11 @@ o.scrolloff = 8
 o.signcolumn = "yes"
 o.colorcolumn = "120"
 o.updatetime = 100
+
+-- vim.cmd[[colorscheme lunaperche]]
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "MatchParen", { bg = "#404040" })
 
 -- o.fillchars:append({
 --     horiz = '━',
