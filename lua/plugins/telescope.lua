@@ -1,5 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
+    event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -14,10 +15,10 @@ return {
                 file_ignore_patterns = {
                     -- "node_modules",
                 },
+                -- selection_caret = "󰼛 ",
+                -- prompt_prefix = "󱞩 ",
                 mappings = {
                     i = {
-                        ['<C-u>'] = false,
-                        ['<C-d>'] = false,
                         ['<C-c>'] = false,
                         ['<C-j>'] = actions.move_selection_next,
                         ['<C-k>'] = actions.move_selection_previous,
@@ -28,10 +29,10 @@ return {
                         ['q'] = actions.close,
                     },
                 },
-                layout_strategy = 'horizontal',
-                sorting_strategy = "ascending",
+                -- layout_strategy = 'horizontal',
+                -- sorting_strategy = "ascending",
                 layout_config = {
-                    prompt_position = "top",
+                    -- prompt_position = "top",
                     height = 0.90,
                     width = 0.90
                 },
