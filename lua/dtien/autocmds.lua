@@ -15,11 +15,11 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
-    group = MyGroup,
-    pattern = "*",
-    command = "%s/\\s\\+$//e",
-})
+-- autocmd({"BufWritePre"}, {
+--     group = MyGroup,
+--     pattern = "*",
+--     command = "%s/\\s\\+$//e",
+-- })
 
 -- autocmd("TermOpen", {
 --     pattern = "*",
