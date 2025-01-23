@@ -18,7 +18,6 @@ return {
 
     {
         "tpope/vim-sleuth",
-        cmd = { "Sleuth" },
     },
 
     {
@@ -117,6 +116,7 @@ return {
         "Exafunction/codeium.vim",
         -- cmd = { "CodeiumEnable" },
         config = function()
+            vim.g.codeium_disable_bindings = 1
             vim.keymap.set("i", "<tab>", function()
                 return vim.fn["codeium#Accept"]()
             end, { expr = true, silent = true })
@@ -125,7 +125,13 @@ return {
 
     {
         "rest-nvim/rest.nvim",
-        ft = { "http" },
+        ft = "http",
+        config = function()
+            if vim.fn.filereadable(".env") == 1 then
+                local env_file = ".env"
+                vim.cmd("Rest env set " .. env_file)
+            end
+        end,
     },
 
     {

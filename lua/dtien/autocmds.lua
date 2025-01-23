@@ -16,22 +16,42 @@ autocmd("TextYankPost", {
     end,
 })
 
--- autocmd({ "BufWritePre" }, {
---     group = MyGroup,
---     pattern = "*",
---     command = "%s/\\s\\+$//e",
--- })
+autocmd({ "BufWritePre" }, {
+    group = MyGroup,
+    pattern = "*",
+    callback = function()
+        local curpos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+        vim.api.nvim_win_set_cursor(0, curpos)
+    end,
+})
 
 autocmd("LspAttach", {
     group = my_group,
     callback = function(event)
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
+        vim.diagnostic.config({
+            float = { border = "single" },
+        })
+
         local nmap = function(keys, func, desc)
             if desc then
                 desc = "LSP: " .. desc
             end
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "" })
+        end
+
+        local inmap = function(keys, func, desc)
+            if desc then
+                desc = "LSP: " .. desc
+            end
+            vim.keymap.set(
+                { "i", "n" },
+                keys,
+                func,
+                { buffer = event.buf, desc = "" }
+            )
         end
 
         nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
@@ -51,8 +71,13 @@ autocmd("LspAttach", {
             "[W]orkspace [S]ymbols"
         )
 
-        nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+        nmap("K", function()
+            vim.lsp.buf.hover({ border = "single" })
+        end, "Hover Documentation")
+
+        inmap("<C-k>", function()
+            vim.lsp.buf.signature_help({ border = "single" })
+        end, "Signature Documentation")
 
         nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
