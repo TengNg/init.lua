@@ -18,7 +18,7 @@ return {
 
     {
         "tpope/vim-sleuth",
-        cmd = { "Sleuth" },
+        cmd = "Sleuth",
     },
 
     {
@@ -114,40 +114,75 @@ return {
     },
 
     {
-        "Exafunction/codeium.vim",
-        -- cmd = { "CodeiumEnable" },
-        config = function()
-            vim.keymap.set("i", "<tab>", function()
-                return vim.fn["codeium#Accept"]()
-            end, { expr = true, silent = true })
-        end,
-    },
-
-    {
         "rest-nvim/rest.nvim",
-        ft = { "http" },
-    },
-
-    {
-        "echasnovski/mini.statusline",
-        enabled = true,
+        ft = "http",
         config = function()
-            local statusline = require("mini.statusline")
-            statusline.setup({ use_icons = false })
-            statusline.section_location = function()
-                return "%2l:%-2v %L"
-            end
-            statusline.section_diagnostics = function()
-                return ""
-            end
-            statusline.section_lsp = function()
-                return ""
-            end
-            statusline.section_git = function()
-                return ""
-            end
+            vim.api.nvim_create_autocmd({ "BufEnter" }, {
+                pattern = "*.http",
+                callback = function()
+                    if vim.fn.filereadable(".env") == 1 then
+                        local env_file = ".env"
+                        vim.cmd("Rest env set " .. env_file)
+                        return
+                    end
+                    if vim.fn.filereadable(".env.dev") == 1 then
+                        local env_file = ".env.dev"
+                        vim.cmd("Rest env set " .. env_file)
+                    end
+                end,
+            })
         end,
     },
+
+    -- {
+    --     "Exafunction/codeium.vim",
+    --     -- cmd = { "CodeiumEnable" },
+    --     event = "BufEnter",
+    --     config = function()
+    --         vim.keymap.set("i", "Tab", function()
+    --             return vim.fn["codeium#Accept"]()
+    --         end, { expr = true, silent = true })
+    --     end,
+    -- },
+
+    -- {
+    --     "folke/zen-mode.nvim",
+    --     opts = {},
+    --     keys = {
+    --         {
+    --             "<leader>zz",
+    --             function()
+    --                 require("zen-mode").toggle({
+    --                     width = 0.80,
+    --                 })
+    --                 vim.wo.wrap = false
+    --                 vim.wo.number = true
+    --                 vim.wo.rnu = true
+    --             end,
+    --         },
+    --     },
+    -- },
+
+    -- {
+    --     "echasnovski/mini.statusline",
+    --     enabled = true,
+    --     config = function()
+    --         local statusline = require("mini.statusline")
+    --         statusline.setup({ use_icons = false })
+    --         statusline.section_location = function()
+    --             return "%2l:%-2v %L"
+    --         end
+    --         statusline.section_diagnostics = function()
+    --             return ""
+    --         end
+    --         statusline.section_lsp = function()
+    --             return ""
+    --         end
+    --         statusline.section_git = function()
+    --             return ""
+    --         end
+    --     end,
+    -- },
 
     -- {
     --     "lukas-reineke/indent-blankline.nvim",
