@@ -18,7 +18,7 @@ return {
 
     {
         "tpope/vim-sleuth",
-        cmd = "Sleuth",
+        -- cmd = "Sleuth",
     },
 
     {
@@ -138,74 +138,14 @@ return {
         end,
     },
 
-    -- {
-    --     "Exafunction/codeium.vim",
-    --     -- cmd = { "CodeiumEnable" },
-    --     event = "BufEnter",
-    --     config = function()
-    --         vim.keymap.set("i", "Tab", function()
-    --             return vim.fn["codeium#Accept"]()
-    --         end, { expr = true, silent = true })
-    --     end,
-    -- },
-
-    -- {
-    --     "folke/zen-mode.nvim",
-    --     opts = {},
-    --     keys = {
-    --         {
-    --             "<leader>zz",
-    --             function()
-    --                 require("zen-mode").toggle({
-    --                     width = 0.80,
-    --                 })
-    --                 vim.wo.wrap = false
-    --                 vim.wo.number = true
-    --                 vim.wo.rnu = true
-    --             end,
-    --         },
-    --     },
-    -- },
-
-    -- {
-    --     "echasnovski/mini.statusline",
-    --     enabled = true,
-    --     config = function()
-    --         local statusline = require("mini.statusline")
-    --         statusline.setup({ use_icons = false })
-    --         statusline.section_location = function()
-    --             return "%2l:%-2v %L"
-    --         end
-    --         statusline.section_diagnostics = function()
-    --             return ""
-    --         end
-    --         statusline.section_lsp = function()
-    --             return ""
-    --         end
-    --         statusline.section_git = function()
-    --             return ""
-    --         end
-    --     end,
-    -- },
-
-    -- {
-    --     "lukas-reineke/indent-blankline.nvim",
-    --     main = "ibl",
-    --     enabled = false,
-    --     opts = {
-    --         indent = { char = " " },
-    --         scope = {
-    --             -- -- U+2502 may also be a good choice, it will be on the middle of cursor.
-    --             -- -- U+250A is also a good choice
-    --             char = "▏",
-    --             highlight = { "Function", "Label" },
-    --             show_start = false,
-    --             show_end = false,
-    --         },
-    --         exclude = {
-    --             filetypes = { "help", "git", "markdown", "snippets", "text", "gitconfig", "alpha", "dashboard" },
-    --             buftypes = { "terminal" },
-    --         },
-    --     },
-    -- },
+    {
+        "Exafunction/codeium.vim",
+        cmd = { "CodeiumEnable" },
+        config = function()
+            vim.g.codeium_disable_bindings = 1
+            vim.keymap.set("i", "<Tab>", function()
+                return vim.fn["codeium#Accept"]()
+            end, { expr = true, silent = true })
+        end,
+    },
 }
