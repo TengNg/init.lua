@@ -7,7 +7,8 @@ g.mapleader = " "
 -- why? see :h sql-completion
 g.omni_sql_no_default_maps = 1
 
--- o.statusline = [[%<%f %h%w%m%r%=%-14.(%l,%c%V%) %L %P]]
+o.statusline =
+    [[%< %{v:lua.vim.api.nvim_get_mode().mode} | %f %h%w%m%r%=%-14.(%l,%c%V%) %L | %P ]]
 
 o.inccommand = "split"
 o.showmode = false
@@ -49,5 +50,8 @@ o.colorcolumn = "80"
 o.textwidth = 80 -- see :help gq
 
 o.updatetime = 100
+
+-- Don't have `o` add a comment
+o.formatoptions:remove "o"
 
 o.fixeol = false
