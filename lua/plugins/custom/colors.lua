@@ -1,17 +1,39 @@
 return {
     {
-        "sainnhe/gruvbox-material",
+        "sainnhe/sonokai",
+        priority = 1000,
+        enabled = true,
+        lazy = false,
         config = function()
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_transparent_background = true
-            vim.cmd([[colorscheme gruvbox-material]])
+            vim.g.sonokai_transparent_background = 1
+            vim.cmd("colorscheme sonokai")
         end,
     },
 
     -- {
+    --     "ellisonleao/gruvbox.nvim",
+    --     priority = 1000,
+    --     enabled = true,
+    --     lazy = false,
+    --     config = function()
+    --         require("gruvbox").setup({
+    --             italic = {
+    --                 strings = false,
+    --                 emphasis = false,
+    --                 comments = false,
+    --                 operators = false,
+    --                 folds = true,
+    --             },
+    --             transparent_mode = true,
+    --         })
+    --         vim.cmd([[colorscheme gruvbox]])
+    --     end,
+    -- },
+
+    -- {
     --     "savq/melange-nvim",
     --     priority = 1000,
-    --     enabled = false,
+    --     enabled = true,
     --     lazy = false,
     --     config = function()
     --         vim.g.melange_enable_font_variants = { italic = false }
@@ -23,22 +45,24 @@ return {
     -- },
 
     -- {
-    --     "ellisonleao/gruvbox.nvim",
+    --     "rebelot/kanagawa.nvim",
     --     priority = 1000,
     --     enabled = true,
     --     lazy = false,
     --     config = function()
-    --         require("gruvbox").setup({
-    --             italic = {
-    --                 strings = false,
-    --                 emphasis = true,
-    --                 comments = false,
-    --                 operators = false,
-    --                 folds = true,
+    --         require("kanagawa").setup({
+    --             transparent = true,
+    --             colors = {
+    --                 theme = {
+    --                     all = {
+    --                         ui = {
+    --                             bg_gutter = "none",
+    --                         },
+    --                     },
+    --                 },
     --             },
-    --             transparent_mode = true,
     --         })
-    --         vim.cmd([[colorscheme gruvbox]])
+    --         vim.cmd([[colorscheme kanagawa]])
     --     end,
     -- },
 
@@ -53,21 +77,47 @@ return {
     --             styles = {
     --                 bold = true,
     --                 italic = false,
-    --                 transparency = true,
+    --                 transparency = false,
     --             },
+    --             palette = {
+    --                 main = {
+    --                     base = "#111111",
+    --                     -- overlay = '#363738',
+    --                 },
+    --                 moon = {
+    --                     base = "#111111",
+    --                     -- overlay = '#363738',
+    --                 },
+    --             },
+    --             highlight_groups = {
+    --                 Directory = { fg = "#68998a" },
+    --                 StatusLine = { fg = "subtle", bg = "overlay", blend = 20 },
+    --                 ColorColumn = { fg = "subtle", bg = "overlay", blend = 20 },
+    --             },
+    --             before_highlight = function(group, highlight, palette)
+    --                 if highlight.fg == palette.pine then
+    --                     highlight.fg = "#6e94b2"
+    --                 end
+    --                 if highlight.fg == palette.foam then
+    --                     highlight.fg = "#b4d4cf"
+    --                 end
+    --                 if highlight.fg == palette.gold then
+    --                     highlight.fg = "#e8b589"
+    --                 end
+    --             end,
     --         })
     --         vim.cmd("colorscheme rose-pine-moon")
     --     end,
     -- },
 
     -- {
-    --     "sainnhe/sonokai",
+    --     "sainnhe/gruvbox-material",
+    --     enabled = false,
     --     priority = 1000,
-    --     enabled = true,
-    --     lazy = false,
     --     config = function()
-    --         vim.g.sonokai_transparent_background = 1
-    --         vim.cmd("colorscheme sonokai")
+    --         vim.g.gruvbox_material_enable_italic = true
+    --         vim.g.gruvbox_material_transparent_background = true
+    --         vim.cmd([[colorscheme gruvbox-material]])
     --     end,
     -- },
 }
