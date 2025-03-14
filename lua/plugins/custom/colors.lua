@@ -1,23 +1,42 @@
 return {
     {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000,
+        "ramojus/mellifluous.nvim",
+        priority = 1001,
         enabled = true,
         lazy = false,
         config = function()
-            require("gruvbox").setup({
-                italic = {
-                    strings = false,
-                    emphasis = false,
-                    comments = false,
-                    operators = false,
-                    folds = true,
+            require("mellifluous").setup({
+                colorset = "mellifluous", -- mountain | tender | alduin
+                transparent_background = {
+                    enabled = true,
                 },
-                transparent_mode = true,
+                mellifluous = {
+                    neutral = true,
+                },
             })
-            vim.cmd([[colorscheme gruvbox]])
+            vim.cmd([[colorscheme mellifluous]])
         end,
     },
+
+    -- {
+    --     "ellisonleao/gruvbox.nvim",
+    --     priority = 1000,
+    --     enabled = false,
+    --     lazy = false,
+    --     config = function()
+    --         require("gruvbox").setup({
+    --             italic = {
+    --                 strings = false,
+    --                 emphasis = false,
+    --                 comments = false,
+    --                 operators = false,
+    --                 folds = true,
+    --             },
+    --             transparent_mode = true,
+    --         })
+    --         vim.cmd([[colorscheme gruvbox]])
+    --     end,
+    -- },
 
     -- {
     --     "rose-pine/neovim",
