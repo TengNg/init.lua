@@ -1,47 +1,47 @@
 return {
     {
-        "sainnhe/gruvbox-material",
-        enabled = true,
+        "ellisonleao/gruvbox.nvim",
         priority = 1000,
+        enabled = true,
+        lazy = false,
         config = function()
-            vim.g.gruvbox_material_foreground = "mixed"
-            vim.g.gruvbox_material_enable_italic = true
-            vim.g.gruvbox_material_transparent_background = true
-            vim.cmd([[colorscheme gruvbox-material]])
+            require("gruvbox").setup({
+                italic = {
+                    strings = false,
+                    emphasis = false,
+                    comments = false,
+                    operators = false,
+                    folds = true,
+                },
+                transparent_mode = true,
+            })
+            vim.cmd([[colorscheme gruvbox]])
         end,
     },
 
     -- {
-    --     "ellisonleao/gruvbox.nvim",
+    --     "sainnhe/gruvbox-material",
+    --     enabled = false,
     --     priority = 1000,
-    --     enabled = true,
-    --     lazy = false,
     --     config = function()
-    --         require("gruvbox").setup({
-    --             italic = {
-    --                 strings = false,
-    --                 emphasis = false,
-    --                 comments = false,
-    --                 operators = false,
-    --                 folds = true,
-    --             },
-    --             transparent_mode = true,
-    --         })
-    --         vim.cmd([[colorscheme gruvbox]])
+    --         vim.g.gruvbox_material_foreground = "material"
+    --         vim.g.gruvbox_material_enable_italic = true
+    --         vim.g.gruvbox_material_transparent_background = true
+    --         vim.cmd([[colorscheme gruvbox-material]])
     --     end,
     -- },
 
     -- {
     --     "savq/melange-nvim",
     --     priority = 1000,
-    --     enabled = true,
+    --     enabled = false,
     --     lazy = false,
     --     config = function()
     --         vim.g.melange_enable_font_variants = { italic = false }
     --         vim.cmd("colorscheme melange")
     --         vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     --         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    --         vim.api.nvim_set_hl(0, "StatusLine", { bg = "#34302C" })
+    --         -- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#34302C" })
     --     end,
     -- },
 
