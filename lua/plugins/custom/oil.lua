@@ -1,6 +1,6 @@
 return {
     "stevearc/oil.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     config = function()
         CustomOilBar = function()
@@ -41,6 +41,6 @@ return {
             },
         })
         vim.keymap.set("n", "-", "<CMD>Oil<CR>")
-        vim.keymap.set("n", "<space>-", oil.toggle_float)
+        vim.keymap.set("n", "<space>vn", oil.toggle_float)
     end,
 }
