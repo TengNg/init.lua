@@ -29,23 +29,6 @@ return {
     },
 
     {
-        "folke/trouble.nvim",
-        opts = {},
-        keys = {
-            {
-                "<leader>xl",
-                "<cmd>Trouble loclist toggle<cr>",
-                desc = "Location List (Trouble)",
-            },
-            {
-                "<leader>xq",
-                "<cmd>Trouble qflist toggle<cr>",
-                desc = "Quickfix List (Trouble)",
-            },
-        },
-    },
-
-    {
         "kylechui/nvim-surround",
         version = "*",
         event = "VeryLazy",
@@ -114,27 +97,6 @@ return {
                     harpoon:list():select(i)
                 end, { desc = "harpoon select mark " .. i })
             end
-        end,
-    },
-
-    {
-        "rest-nvim/rest.nvim",
-        ft = "http",
-        config = function()
-            vim.api.nvim_create_autocmd({ "BufEnter" }, {
-                pattern = "*.http",
-                callback = function()
-                    if vim.fn.filereadable(".env") == 1 then
-                        local env_file = ".env"
-                        vim.cmd("Rest env set " .. env_file)
-                        return
-                    end
-                    if vim.fn.filereadable(".env.dev") == 1 then
-                        local env_file = ".env.dev"
-                        vim.cmd("Rest env set " .. env_file)
-                    end
-                end,
-            })
         end,
     },
 

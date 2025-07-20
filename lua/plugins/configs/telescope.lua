@@ -20,7 +20,6 @@ require("telescope").setup({
             filesize_limit = 0.1, -- MB
         },
 
-
         mappings = {
             i = {
                 ["<C-c>"] = false,
