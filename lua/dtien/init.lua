@@ -1,4 +1,4 @@
-require("dtien.set")
+require("dtien.options")
 require("dtien.netrw")
 require("dtien.remaps")
 require("dtien.lazy")

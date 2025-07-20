@@ -52,6 +52,6 @@ o.textwidth = 80 -- see :help gq
 o.updatetime = 100
 
 o.iskeyword:append("-")
--- o.path:append("**")
+o.path:append("**")
 
 o.fixeol = false
