@@ -1,6 +1,6 @@
 return {
     "stevearc/oil.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     config = function()
         CustomOilBar = function()
@@ -26,6 +26,7 @@ return {
             },
             win_options = {
                 winbar = "%{v:lua.CustomOilBar()}",
+                list = true,
             },
             use_default_keymaps = false,
             keymaps = {
@@ -42,5 +43,6 @@ return {
         })
         vim.keymap.set("n", "-", "<CMD>Oil<CR>")
         vim.keymap.set("n", "<space>vn", oil.toggle_float)
+        vim.keymap.set("n", "<space>vl", "<CMD>vsplit | Oil<CR>")
     end,
 }

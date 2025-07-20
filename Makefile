@@ -4,6 +4,7 @@ format:
 cleanup:
 	rm -rdf ~/.local/share/nvim/
 	rm -rdf ~/.local/state/nvim/
+	rm -rdf ~/.cache/nvim
 	echo 'cleaned up done'
 
 auto-commit:
