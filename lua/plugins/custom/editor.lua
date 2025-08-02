@@ -18,7 +18,25 @@ return {
 
     {
         "tpope/vim-sleuth",
-        -- cmd = "Sleuth",
+        cmd = "Sleuth",
+    },
+
+    {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = { "Trouble" },
+        keys = {
+            {
+                "<leader>xl",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xq",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
     },
 
     {

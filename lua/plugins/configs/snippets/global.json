@@ -1,4 +1,11 @@
 {
+    "date": {
+        "prefix": "date",
+        "body": [
+            "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"
+        ],
+        "description": "I give you back the date (Y-m-d)"
+    },
     "datetime": {
         "prefix": "datetime",
         "body": [
