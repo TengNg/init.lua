@@ -55,3 +55,8 @@ o.updatetime = 100
 -- o.path:append("**")
 
 o.fixeol = false
+
+vim.cmd("colorscheme retrobox")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
